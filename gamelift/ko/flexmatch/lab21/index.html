@@ -12,20 +12,20 @@
     <title>Lambda 함수 구성하기 :: GameLift 로 Full Stack Game 시작</title>
 
     
-    <link href="/gamelift/ko/css/nucleus.css?1591975876" rel="stylesheet">
-    <link href="/gamelift/ko/css/fontawesome-all.min.css?1591975876" rel="stylesheet">
-    <link href="/gamelift/ko/css/hybrid.css?1591975876" rel="stylesheet">
-    <link href="/gamelift/ko/css/featherlight.min.css?1591975876" rel="stylesheet">
-    <link href="/gamelift/ko/css/perfect-scrollbar.min.css?1591975876" rel="stylesheet">
-    <link href="/gamelift/ko/css/auto-complete.css?1591975876" rel="stylesheet">
-    <link href="/gamelift/ko/css/atom-one-dark-reasonable.css?1591975876" rel="stylesheet">
-    <link href="/gamelift/ko/css/theme.css?1591975876" rel="stylesheet">
-    <link href="/gamelift/ko/css/hugo-theme.css?1591975876" rel="stylesheet">
+    <link href="/gamelift/ko/css/nucleus.css?1592035679" rel="stylesheet">
+    <link href="/gamelift/ko/css/fontawesome-all.min.css?1592035679" rel="stylesheet">
+    <link href="/gamelift/ko/css/hybrid.css?1592035679" rel="stylesheet">
+    <link href="/gamelift/ko/css/featherlight.min.css?1592035679" rel="stylesheet">
+    <link href="/gamelift/ko/css/perfect-scrollbar.min.css?1592035679" rel="stylesheet">
+    <link href="/gamelift/ko/css/auto-complete.css?1592035679" rel="stylesheet">
+    <link href="/gamelift/ko/css/atom-one-dark-reasonable.css?1592035679" rel="stylesheet">
+    <link href="/gamelift/ko/css/theme.css?1592035679" rel="stylesheet">
+    <link href="/gamelift/ko/css/hugo-theme.css?1592035679" rel="stylesheet">
     
-      <link href="/gamelift/ko/css/theme-aws.css?1591975876" rel="stylesheet">
+      <link href="/gamelift/ko/css/theme-aws.css?1592035679" rel="stylesheet">
     
 
-    <script src="/gamelift/ko/js/jquery-3.3.1.min.js?1591975876"></script>
+    <script src="/gamelift/ko/js/jquery-3.3.1.min.js?1592035679"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -54,14 +54,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/gamelift/ko/js/lunr.min.js?1591975876"></script>
-<script type="text/javascript" src="/gamelift/ko/js/auto-complete.js?1591975876"></script>
+<script type="text/javascript" src="/gamelift/ko/js/lunr.min.js?1592035679"></script>
+<script type="text/javascript" src="/gamelift/ko/js/auto-complete.js?1592035679"></script>
 <script type="text/javascript">
     
         var baseurl = "\/gamelift\/ko\/ko";
     
 </script>
-<script type="text/javascript" src="/gamelift/ko/js/search.js?1591975876"></script>
+<script type="text/javascript" src="/gamelift/ko/js/search.js?1592035679"></script>
 
     
   </div>
@@ -1227,7 +1227,10 @@
 <ol start="10">
 <li>Save 버튼을 클릭하여 함수를 생성합니다. 생성한 함수는 SQS 에 기록된 게임 결과 점수를 읽어와 DynamoDB 에 업데이트하는 역할을 수행합니다. Lambda 함수는 SQS 대기열을 지속적으로 폴링하며 메시지를 가져와 DynamoDB 에 점수 결과를 반영합니다.</li>
 </ol>
-<p><strong>실습의 편의를 위하여 Python Package 를 별도의 바이너리 형태로 제공합니다. 즉, GetRank.py 와 Scoring.py 를 이용한 Lambda 함수 작성은 제공받은 바이너리 안에 Lambda/LambdaDeploy 경로를 참고합니다.</strong></p>
+
+<div class="notices tip" ><p><strong>실습의 편의를 위하여 Python Package 를 별도의 바이너리 형태로 제공합니다. 즉, GetRank.py 와 Scoring.py 를 이용한 Lambda 함수 작성은 제공받은 바이너리 안에 Lambda/LambdaDeploy 경로를 참고합니다.</strong> 바이너리 다운로드는 <a href="../../intro/lab02">실습 사전 준비</a> 항목을 참고해주세요.</p>
+</div>
+
 <p>두 번째 Lambda 함수는 Python 패키지를 업로드하여 생성합니다.    이전에 생성한 함수는 Python 표준 SDK만을 사용하기 때문에 인라인 편집기를 사용했지만, 다른 Lambda 함수들은 Redis 라이브러리를 참조하기 때문에 배포 패키지를 업로드 하여 함수를 생성할 것입니다. Lambda 함수를 Python 배포 패키지를 업로드하여 생성해볼 수 있는 아주 좋은 기회입니다.</p>
 <ol>
 <li>
@@ -1968,19 +1971,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/gamelift/ko/js/clipboard.min.js?1591975876"></script>
-    <script src="/gamelift/ko/js/perfect-scrollbar.min.js?1591975876"></script>
-    <script src="/gamelift/ko/js/perfect-scrollbar.jquery.min.js?1591975876"></script>
-    <script src="/gamelift/ko/js/jquery.sticky.js?1591975876"></script>
-    <script src="/gamelift/ko/js/featherlight.min.js?1591975876"></script>
-    <script src="/gamelift/ko/js/highlight.pack.js?1591975876"></script>
+    <script src="/gamelift/ko/js/clipboard.min.js?1592035679"></script>
+    <script src="/gamelift/ko/js/perfect-scrollbar.min.js?1592035679"></script>
+    <script src="/gamelift/ko/js/perfect-scrollbar.jquery.min.js?1592035679"></script>
+    <script src="/gamelift/ko/js/jquery.sticky.js?1592035679"></script>
+    <script src="/gamelift/ko/js/featherlight.min.js?1592035679"></script>
+    <script src="/gamelift/ko/js/highlight.pack.js?1592035679"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/gamelift/ko/js/modernizr.custom-3.6.0.js?1591975876"></script>
-    <script src="/gamelift/ko/js/learn.js?1591975876"></script>
-    <script src="/gamelift/ko/js/hugo-learn.js?1591975876"></script>
+    <script src="/gamelift/ko/js/modernizr.custom-3.6.0.js?1592035679"></script>
+    <script src="/gamelift/ko/js/learn.js?1592035679"></script>
+    <script src="/gamelift/ko/js/hugo-learn.js?1592035679"></script>
 
-    <link href="/gamelift/ko/mermaid/mermaid.css?1591975876" rel="stylesheet" />
-    <script src="/gamelift/ko/mermaid/mermaid.js?1591975876"></script>
+    <link href="/gamelift/ko/mermaid/mermaid.css?1592035679" rel="stylesheet" />
+    <script src="/gamelift/ko/mermaid/mermaid.js?1592035679"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>
