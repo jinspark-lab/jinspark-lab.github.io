@@ -12,20 +12,20 @@
     <title>Creating Game Server Build &amp; Fleet :: Start Full Stack Game with GameLift</title>
 
     
-    <link href="/gamelift/en/css/nucleus.css?1592207060" rel="stylesheet">
-    <link href="/gamelift/en/css/fontawesome-all.min.css?1592207060" rel="stylesheet">
-    <link href="/gamelift/en/css/hybrid.css?1592207060" rel="stylesheet">
-    <link href="/gamelift/en/css/featherlight.min.css?1592207060" rel="stylesheet">
-    <link href="/gamelift/en/css/perfect-scrollbar.min.css?1592207060" rel="stylesheet">
-    <link href="/gamelift/en/css/auto-complete.css?1592207060" rel="stylesheet">
-    <link href="/gamelift/en/css/atom-one-dark-reasonable.css?1592207060" rel="stylesheet">
-    <link href="/gamelift/en/css/theme.css?1592207060" rel="stylesheet">
-    <link href="/gamelift/en/css/hugo-theme.css?1592207060" rel="stylesheet">
+    <link href="/gamelift/en/css/nucleus.css?1592229073" rel="stylesheet">
+    <link href="/gamelift/en/css/fontawesome-all.min.css?1592229073" rel="stylesheet">
+    <link href="/gamelift/en/css/hybrid.css?1592229073" rel="stylesheet">
+    <link href="/gamelift/en/css/featherlight.min.css?1592229073" rel="stylesheet">
+    <link href="/gamelift/en/css/perfect-scrollbar.min.css?1592229073" rel="stylesheet">
+    <link href="/gamelift/en/css/auto-complete.css?1592229073" rel="stylesheet">
+    <link href="/gamelift/en/css/atom-one-dark-reasonable.css?1592229073" rel="stylesheet">
+    <link href="/gamelift/en/css/theme.css?1592229073" rel="stylesheet">
+    <link href="/gamelift/en/css/hugo-theme.css?1592229073" rel="stylesheet">
     
-      <link href="/gamelift/en/css/theme-aws.css?1592207060" rel="stylesheet">
+      <link href="/gamelift/en/css/theme-aws.css?1592229073" rel="stylesheet">
     
 
-    <script src="/gamelift/en/js/jquery-3.3.1.min.js?1592207060"></script>
+    <script src="/gamelift/en/js/jquery-3.3.1.min.js?1592229073"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -64,14 +64,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/gamelift/en/js/lunr.min.js?1592207060"></script>
-<script type="text/javascript" src="/gamelift/en/js/auto-complete.js?1592207060"></script>
+<script type="text/javascript" src="/gamelift/en/js/lunr.min.js?1592229073"></script>
+<script type="text/javascript" src="/gamelift/en/js/auto-complete.js?1592229073"></script>
 <script type="text/javascript">
     
         var baseurl = "\/gamelift\/en\/en";
     
 </script>
-<script type="text/javascript" src="/gamelift/en/js/search.js?1592207060"></script>
+<script type="text/javascript" src="/gamelift/en/js/search.js?1592229073"></script>
 
     
   </div>
@@ -1233,19 +1233,25 @@ Also, put SQS_ENDPOINT values of SQS endpoint URL.</p>
 </ol>
 <p><img src="./images/Flex-Server-2%5Ben%5D.png" alt="Flex-Server"></p>
 <ol start="10">
-<li>Put information below. Other information can be configured as default.
-Name: GomokuGameServerFleet-1
-Instance Type: C5.large
-Fleet type: Spot
-Instance Role ARN: IAM Role ARN for GameLift Fleet that we made last page of part 1 (Gomoku-GameLiftFleetRole)</li>
+<li>Put information below. Other information can be configured as default.</li>
 </ol>
-<p>Process Management (Check Green button)
-Launch path: Binaries\Win64\GomokuServer.exe (If you compiled by yourselves, put path of your binary)
-Concurrency Process : 50</p>
-<p>Network Configuration (Check Green button)
-EC2 Port Setting : 49152-60000
-Protocol : TCP
-IP address range : 0.0.0.0/0</p>
+<ul>
+<li>Name: GomokuGameServerFleet-1</li>
+<li>Instance Type: C5.large</li>
+<li>Fleet type: Spot</li>
+<li>Instance Role ARN: IAM Role ARN for GameLift Fleet that we made last page of part 1 (Gomoku-GameLiftFleetRole)</li>
+</ul>
+<p>Process Management (Check Green button)</p>
+<ul>
+<li>Launch path: Binaries\Win64\GomokuServer.exe (If you compiled by yourselves, put path of your binary)</li>
+<li>Concurrency Process : 50</li>
+</ul>
+<p>Network Configuration (Check Green button)</p>
+<ul>
+<li>EC2 Port Setting : 49152-60000</li>
+<li>Protocol : TCP</li>
+<li>IP address range : 0.0.0.0/0</li>
+</ul>
 <p><img src="./images/Flex-Server-3%5Ben%5D.png" alt="Flex-Server"></p>
 <p>You can focus Fleet Type &ldquo;SPOT&rdquo; on this setting. It is able to use your Game Server Instances cost-efficient by using Spot Fleet.</p>
 <ol start="11">
@@ -1915,19 +1921,19 @@ When Alias is called, requests will pass to associated Fleet.</p>
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/gamelift/en/js/clipboard.min.js?1592207060"></script>
-    <script src="/gamelift/en/js/perfect-scrollbar.min.js?1592207060"></script>
-    <script src="/gamelift/en/js/perfect-scrollbar.jquery.min.js?1592207060"></script>
-    <script src="/gamelift/en/js/jquery.sticky.js?1592207060"></script>
-    <script src="/gamelift/en/js/featherlight.min.js?1592207060"></script>
-    <script src="/gamelift/en/js/highlight.pack.js?1592207060"></script>
+    <script src="/gamelift/en/js/clipboard.min.js?1592229073"></script>
+    <script src="/gamelift/en/js/perfect-scrollbar.min.js?1592229073"></script>
+    <script src="/gamelift/en/js/perfect-scrollbar.jquery.min.js?1592229073"></script>
+    <script src="/gamelift/en/js/jquery.sticky.js?1592229073"></script>
+    <script src="/gamelift/en/js/featherlight.min.js?1592229073"></script>
+    <script src="/gamelift/en/js/highlight.pack.js?1592229073"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/gamelift/en/js/modernizr.custom-3.6.0.js?1592207060"></script>
-    <script src="/gamelift/en/js/learn.js?1592207060"></script>
-    <script src="/gamelift/en/js/hugo-learn.js?1592207060"></script>
+    <script src="/gamelift/en/js/modernizr.custom-3.6.0.js?1592229073"></script>
+    <script src="/gamelift/en/js/learn.js?1592229073"></script>
+    <script src="/gamelift/en/js/hugo-learn.js?1592229073"></script>
 
-    <link href="/gamelift/en/mermaid/mermaid.css?1592207060" rel="stylesheet" />
-    <script src="/gamelift/en/mermaid/mermaid.js?1592207060"></script>
+    <link href="/gamelift/en/mermaid/mermaid.css?1592229073" rel="stylesheet" />
+    <script src="/gamelift/en/mermaid/mermaid.js?1592229073"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>
