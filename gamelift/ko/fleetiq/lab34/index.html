@@ -12,20 +12,20 @@
     <title>FleetIQ 기반 서버 생성 :: GameLift 로 Full Stack Game 시작</title>
 
     
-    <link href="/gamelift/ko/css/nucleus.css?1592320024" rel="stylesheet">
-    <link href="/gamelift/ko/css/fontawesome-all.min.css?1592320024" rel="stylesheet">
-    <link href="/gamelift/ko/css/hybrid.css?1592320024" rel="stylesheet">
-    <link href="/gamelift/ko/css/featherlight.min.css?1592320024" rel="stylesheet">
-    <link href="/gamelift/ko/css/perfect-scrollbar.min.css?1592320024" rel="stylesheet">
-    <link href="/gamelift/ko/css/auto-complete.css?1592320024" rel="stylesheet">
-    <link href="/gamelift/ko/css/atom-one-dark-reasonable.css?1592320024" rel="stylesheet">
-    <link href="/gamelift/ko/css/theme.css?1592320024" rel="stylesheet">
-    <link href="/gamelift/ko/css/hugo-theme.css?1592320024" rel="stylesheet">
+    <link href="/gamelift/ko/css/nucleus.css?1592361948" rel="stylesheet">
+    <link href="/gamelift/ko/css/fontawesome-all.min.css?1592361948" rel="stylesheet">
+    <link href="/gamelift/ko/css/hybrid.css?1592361948" rel="stylesheet">
+    <link href="/gamelift/ko/css/featherlight.min.css?1592361948" rel="stylesheet">
+    <link href="/gamelift/ko/css/perfect-scrollbar.min.css?1592361948" rel="stylesheet">
+    <link href="/gamelift/ko/css/auto-complete.css?1592361948" rel="stylesheet">
+    <link href="/gamelift/ko/css/atom-one-dark-reasonable.css?1592361948" rel="stylesheet">
+    <link href="/gamelift/ko/css/theme.css?1592361948" rel="stylesheet">
+    <link href="/gamelift/ko/css/hugo-theme.css?1592361948" rel="stylesheet">
     
-      <link href="/gamelift/ko/css/theme-aws.css?1592320024" rel="stylesheet">
+      <link href="/gamelift/ko/css/theme-aws.css?1592361948" rel="stylesheet">
     
 
-    <script src="/gamelift/ko/js/jquery-3.3.1.min.js?1592320024"></script>
+    <script src="/gamelift/ko/js/jquery-3.3.1.min.js?1592361948"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -64,14 +64,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/gamelift/ko/js/lunr.min.js?1592320024"></script>
-<script type="text/javascript" src="/gamelift/ko/js/auto-complete.js?1592320024"></script>
+<script type="text/javascript" src="/gamelift/ko/js/lunr.min.js?1592361948"></script>
+<script type="text/javascript" src="/gamelift/ko/js/auto-complete.js?1592361948"></script>
 <script type="text/javascript">
     
         var baseurl = "\/gamelift\/ko\/ko";
     
 </script>
-<script type="text/javascript" src="/gamelift/ko/js/search.js?1592320024"></script>
+<script type="text/javascript" src="/gamelift/ko/js/search.js?1592361948"></script>
 
     
   </div>
@@ -1207,8 +1207,10 @@
 </ol>
 <p><img src="../../images/fleetiq/lab34/IQServer-2.png" alt="IQ"></p>
 <ol start="4">
-<li>SSH 키를 카피 하셨다면, 다시 EC2 콘솔에서 해당 인스턴스에 접속합니다.</li>
+<li>SSH 키를 카피 하셨다면, 다시 EC2 콘솔로 이동하고, 다음과 같이 해당 인스턴스에 접속합니다.</li>
 </ol>
+<p><img src="../../images/fleetiq/lab34/IQServer-20.png" alt="IQ"></p>
+<p>접속에 대한 상세한 가이드는 다음 <a href="https://docs.aws.amazon.com/ko_kr/AWSEC2/latest/UserGuide/Connect-using-EC2-Instance-Connect.html">링크</a>를 참고합니다.</p>
 <pre><code class="language-ssh" data-lang="ssh">vi ~/.ssh/authorized_keys
 </code></pre><p>커맨드를 입력하고, 나오는 인증키 정보 창에서 맨 뒤에 복사한 값을 붙여넣기 합니다.</p>
 <pre><code class="language-ssh" data-lang="ssh">ssh-rsa ~~~ key
@@ -1350,6 +1352,107 @@ server_socket<span style="color:#f92672">.</span>close()
     )
     <span style="color:#66d9ef">print</span>(response)
 </code></pre></div><ol start="6">
+<li>완성된 코드는 다음과 같습니다.</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> socket
+<span style="color:#f92672">import</span> boto3
+<span style="color:#f92672">import</span> requests
+
+
+GameServerGroupName <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;GameServerGroups&#39;</span>
+GameServerId <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;game-server-1&#39;</span>
+InstanceId <span style="color:#f92672">=</span> requests<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;http://169.254.169.254/latest/meta-data/instance-id&#39;</span>)<span style="color:#f92672">.</span>text
+ConnectionInfo <span style="color:#f92672">=</span> requests<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;http://169.254.169.254/latest/meta-data/public-hostname&#39;</span>)<span style="color:#f92672">.</span>text
+
+client <span style="color:#f92672">=</span> boto3<span style="color:#f92672">.</span>client(<span style="color:#e6db74">&#39;gamelift&#39;</span>, <span style="color:#e6db74">&#39;ap-northeast-2&#39;</span>)
+
+server_socket <span style="color:#f92672">=</span> socket<span style="color:#f92672">.</span>socket(socket<span style="color:#f92672">.</span>AF_INET, socket<span style="color:#f92672">.</span>SOCK_STREAM)
+server_socket<span style="color:#f92672">.</span>bind((<span style="color:#e6db74">&#34;&#34;</span>, <span style="color:#ae81ff">5000</span>))
+server_socket<span style="color:#f92672">.</span>listen(<span style="color:#ae81ff">5</span>)
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">list_game_servers</span>():
+    response <span style="color:#f92672">=</span> client<span style="color:#f92672">.</span>list_game_servers(
+        GameServerGroupName<span style="color:#f92672">=</span>GameServerGroupName
+    )
+    <span style="color:#66d9ef">print</span>(response)
+    <span style="color:#66d9ef">return</span> response
+
+<span style="color:#75715e"># Register GameServer</span>
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">register_game_server</span>():
+    response <span style="color:#f92672">=</span> client<span style="color:#f92672">.</span>register_game_server(
+        GameServerGroupName<span style="color:#f92672">=</span>GameServerGroupName,
+        GameServerId<span style="color:#f92672">=</span>GameServerId,
+        InstanceId<span style="color:#f92672">=</span>InstanceId,
+        ConnectionInfo<span style="color:#f92672">=</span>ConnectionInfo
+    )
+    <span style="color:#66d9ef">print</span>(response)
+<span style="color:#75715e">#</span>
+
+<span style="color:#75715e"># Update GameServer</span>
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">update_game_server</span>(flag):
+    <span style="color:#66d9ef">if</span> flag <span style="color:#f92672">==</span> True:
+        <span style="color:#66d9ef">return</span> client<span style="color:#f92672">.</span>update_game_server(
+            GameServerGroupName<span style="color:#f92672">=</span>GameServerGroupName,
+            GameServerId<span style="color:#f92672">=</span>GameServerId,
+            HealthCheck<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;HEALTHY&#34;</span>,
+            UtilizationStatus<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;AVAILABLE&#34;</span>
+        )
+    <span style="color:#66d9ef">else</span>:
+        <span style="color:#66d9ef">return</span> client<span style="color:#f92672">.</span>update_game_server(
+            GameServerGroupName<span style="color:#f92672">=</span>GameServerGroupName,
+            GameServerId<span style="color:#f92672">=</span>GameServerId,
+            HealthCheck<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;HEALTHY&#34;</span>,
+            UtilizationStatus<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;UTILIZED&#34;</span>
+        )
+<span style="color:#75715e">#</span>
+
+<span style="color:#75715e"># Deregister GameServer</span>
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">deregister_game_server</span>():
+    response <span style="color:#f92672">=</span> client<span style="color:#f92672">.</span>deregister_game_server(
+        GameServerGroupName<span style="color:#f92672">=</span>GameServerGroupName,
+        GameServerId<span style="color:#f92672">=</span>GameServerId
+    )
+    <span style="color:#66d9ef">print</span>(response)
+<span style="color:#75715e">#</span>
+
+<span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;TCP server waiting for Client on port 5000&#34;</span>)
+
+<span style="color:#66d9ef">while</span> True:
+    <span style="color:#75715e"># List Game Server </span>
+    listResponse <span style="color:#f92672">=</span> list_game_servers()
+
+    <span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> <span style="color:#e6db74">&#39;GameServers&#39;</span> <span style="color:#f92672">in</span> listResponse <span style="color:#f92672">or</span> <span style="color:#f92672">not</span> any(server[<span style="color:#e6db74">&#39;GameServerId&#39;</span>] <span style="color:#f92672">==</span> GameServerId <span style="color:#66d9ef">for</span> server <span style="color:#f92672">in</span> listResponse[<span style="color:#e6db74">&#39;GameServers&#39;</span>]):
+        <span style="color:#75715e"># Register Game Server to Game Server Group</span>
+        register_game_server()
+        <span style="color:#75715e">#</span>
+
+    <span style="color:#75715e"># Update Game Server Status &#34;AVAILABLE&#34;</span>
+    update_game_server(True)
+    <span style="color:#75715e">#</span>
+
+    client_socket, address <span style="color:#f92672">=</span> server_socket<span style="color:#f92672">.</span>accept()
+    <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;I got connection from &#34;</span>, address)
+
+    <span style="color:#75715e"># Update Game Server Status &#34;UTILIZED&#34;</span>
+    update_game_server(False)
+    <span style="color:#75715e">#</span>
+
+    <span style="color:#66d9ef">while</span> True:
+        data <span style="color:#f92672">=</span> client_socket<span style="color:#f92672">.</span>recv(<span style="color:#ae81ff">512</span>)<span style="color:#f92672">.</span>decode()
+        <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;RECEIVED:&#34;</span>, data)
+        <span style="color:#66d9ef">if</span>(data <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;q&#39;</span> <span style="color:#f92672">or</span> data <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;Q&#39;</span>):
+            client_socket<span style="color:#f92672">.</span>close()
+            <span style="color:#66d9ef">break</span>
+        <span style="color:#66d9ef">else</span>:
+            client_socket<span style="color:#f92672">.</span>send(data<span style="color:#f92672">.</span>encode())
+
+    <span style="color:#75715e"># Deregister Game Server</span>
+    deregister_game_server()
+    <span style="color:#75715e">#</span>
+
+server_socket<span style="color:#f92672">.</span>close()
+<span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;SOCKET Closed... End&#34;</span>)
+</code></pre></div><ol start="7">
 <li>다음으로 클라이언트를 구현해보도록 하겠습니다.</li>
 </ol>
 <hr>
@@ -1992,19 +2095,19 @@ server_socket<span style="color:#f92672">.</span>close()
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/gamelift/ko/js/clipboard.min.js?1592320024"></script>
-    <script src="/gamelift/ko/js/perfect-scrollbar.min.js?1592320024"></script>
-    <script src="/gamelift/ko/js/perfect-scrollbar.jquery.min.js?1592320024"></script>
-    <script src="/gamelift/ko/js/jquery.sticky.js?1592320024"></script>
-    <script src="/gamelift/ko/js/featherlight.min.js?1592320024"></script>
-    <script src="/gamelift/ko/js/highlight.pack.js?1592320024"></script>
+    <script src="/gamelift/ko/js/clipboard.min.js?1592361948"></script>
+    <script src="/gamelift/ko/js/perfect-scrollbar.min.js?1592361948"></script>
+    <script src="/gamelift/ko/js/perfect-scrollbar.jquery.min.js?1592361948"></script>
+    <script src="/gamelift/ko/js/jquery.sticky.js?1592361948"></script>
+    <script src="/gamelift/ko/js/featherlight.min.js?1592361948"></script>
+    <script src="/gamelift/ko/js/highlight.pack.js?1592361948"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/gamelift/ko/js/modernizr.custom-3.6.0.js?1592320024"></script>
-    <script src="/gamelift/ko/js/learn.js?1592320024"></script>
-    <script src="/gamelift/ko/js/hugo-learn.js?1592320024"></script>
+    <script src="/gamelift/ko/js/modernizr.custom-3.6.0.js?1592361948"></script>
+    <script src="/gamelift/ko/js/learn.js?1592361948"></script>
+    <script src="/gamelift/ko/js/hugo-learn.js?1592361948"></script>
 
-    <link href="/gamelift/ko/mermaid/mermaid.css?1592320024" rel="stylesheet" />
-    <script src="/gamelift/ko/mermaid/mermaid.js?1592320024"></script>
+    <link href="/gamelift/ko/mermaid/mermaid.css?1592361948" rel="stylesheet" />
+    <script src="/gamelift/ko/mermaid/mermaid.js?1592361948"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>
