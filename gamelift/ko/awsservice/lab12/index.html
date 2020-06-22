@@ -12,20 +12,20 @@
     <title>ElastiCache 구성 :: GameLift 로 Full Stack Game 시작</title>
 
     
-    <link href="/gamelift/ko/css/nucleus.css?1592362358" rel="stylesheet">
-    <link href="/gamelift/ko/css/fontawesome-all.min.css?1592362358" rel="stylesheet">
-    <link href="/gamelift/ko/css/hybrid.css?1592362358" rel="stylesheet">
-    <link href="/gamelift/ko/css/featherlight.min.css?1592362358" rel="stylesheet">
-    <link href="/gamelift/ko/css/perfect-scrollbar.min.css?1592362358" rel="stylesheet">
-    <link href="/gamelift/ko/css/auto-complete.css?1592362358" rel="stylesheet">
-    <link href="/gamelift/ko/css/atom-one-dark-reasonable.css?1592362358" rel="stylesheet">
-    <link href="/gamelift/ko/css/theme.css?1592362358" rel="stylesheet">
-    <link href="/gamelift/ko/css/hugo-theme.css?1592362358" rel="stylesheet">
+    <link href="/gamelift/ko/css/nucleus.css?1592834344" rel="stylesheet">
+    <link href="/gamelift/ko/css/fontawesome-all.min.css?1592834344" rel="stylesheet">
+    <link href="/gamelift/ko/css/hybrid.css?1592834344" rel="stylesheet">
+    <link href="/gamelift/ko/css/featherlight.min.css?1592834344" rel="stylesheet">
+    <link href="/gamelift/ko/css/perfect-scrollbar.min.css?1592834344" rel="stylesheet">
+    <link href="/gamelift/ko/css/auto-complete.css?1592834344" rel="stylesheet">
+    <link href="/gamelift/ko/css/atom-one-dark-reasonable.css?1592834344" rel="stylesheet">
+    <link href="/gamelift/ko/css/theme.css?1592834344" rel="stylesheet">
+    <link href="/gamelift/ko/css/hugo-theme.css?1592834344" rel="stylesheet">
     
-      <link href="/gamelift/ko/css/theme-aws.css?1592362358" rel="stylesheet">
+      <link href="/gamelift/ko/css/theme-aws.css?1592834344" rel="stylesheet">
     
 
-    <script src="/gamelift/ko/js/jquery-3.3.1.min.js?1592362358"></script>
+    <script src="/gamelift/ko/js/jquery-3.3.1.min.js?1592834344"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -64,14 +64,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/gamelift/ko/js/lunr.min.js?1592362358"></script>
-<script type="text/javascript" src="/gamelift/ko/js/auto-complete.js?1592362358"></script>
+<script type="text/javascript" src="/gamelift/ko/js/lunr.min.js?1592834344"></script>
+<script type="text/javascript" src="/gamelift/ko/js/auto-complete.js?1592834344"></script>
 <script type="text/javascript">
     
         var baseurl = "\/gamelift\/ko\/ko";
     
 </script>
-<script type="text/javascript" src="/gamelift/ko/js/search.js?1592362358"></script>
+<script type="text/javascript" src="/gamelift/ko/js/search.js?1592834344"></script>
 
     
   </div>
@@ -1217,9 +1217,11 @@
 <li>Edit 버튼을 클릭하고 다음 스크린 캡처와 같이 정책을 생성합니다. 여기서 Source 에는 <strong>보안 정책 자신의 Group ID</strong>를 입력합니다. 이렇게 함으로써 이 보안 그룹을 할당한 호스트와 서비스들끼리 통신을 할 수 있습니다. 생성한 보안 그룹을 기억해 둡니다.</li>
 </ol>
 <p><img src="../../images/awsservice/lab12/SecurityGroup.png" alt="SecurityGroup"></p>
-<p>Type: All traffic
-Protocol: All
-Source: Security Group itself</p>
+<ul>
+<li>Type: All traffic</li>
+<li>Protocol: All</li>
+<li>Source: Security Group itself</li>
+</ul>
 <ol start="12">
 <li>보안 그룹 생성을 완료하였다면 다시 ElastiCache 페이지로 돌아와 생성한 Redis 클러스터를 선택합니다.</li>
 <li>클러스터를 선택하고 상단의 Modify 버튼을 클릭하고, 팝업 메뉴에서 VPC Security Group 에 방금 생성한 Security Group 을 선택한 뒤 반영합니다.</li>
@@ -1866,19 +1868,19 @@ Source: Security Group itself</p>
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/gamelift/ko/js/clipboard.min.js?1592362358"></script>
-    <script src="/gamelift/ko/js/perfect-scrollbar.min.js?1592362358"></script>
-    <script src="/gamelift/ko/js/perfect-scrollbar.jquery.min.js?1592362358"></script>
-    <script src="/gamelift/ko/js/jquery.sticky.js?1592362358"></script>
-    <script src="/gamelift/ko/js/featherlight.min.js?1592362358"></script>
-    <script src="/gamelift/ko/js/highlight.pack.js?1592362358"></script>
+    <script src="/gamelift/ko/js/clipboard.min.js?1592834344"></script>
+    <script src="/gamelift/ko/js/perfect-scrollbar.min.js?1592834344"></script>
+    <script src="/gamelift/ko/js/perfect-scrollbar.jquery.min.js?1592834344"></script>
+    <script src="/gamelift/ko/js/jquery.sticky.js?1592834344"></script>
+    <script src="/gamelift/ko/js/featherlight.min.js?1592834344"></script>
+    <script src="/gamelift/ko/js/highlight.pack.js?1592834344"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/gamelift/ko/js/modernizr.custom-3.6.0.js?1592362358"></script>
-    <script src="/gamelift/ko/js/learn.js?1592362358"></script>
-    <script src="/gamelift/ko/js/hugo-learn.js?1592362358"></script>
+    <script src="/gamelift/ko/js/modernizr.custom-3.6.0.js?1592834344"></script>
+    <script src="/gamelift/ko/js/learn.js?1592834344"></script>
+    <script src="/gamelift/ko/js/hugo-learn.js?1592834344"></script>
 
-    <link href="/gamelift/ko/mermaid/mermaid.css?1592362358" rel="stylesheet" />
-    <script src="/gamelift/ko/mermaid/mermaid.js?1592362358"></script>
+    <link href="/gamelift/ko/mermaid/mermaid.css?1592834344" rel="stylesheet" />
+    <script src="/gamelift/ko/mermaid/mermaid.js?1592834344"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>
